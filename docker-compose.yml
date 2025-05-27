@@ -1,0 +1,21 @@
+services:
+  db:
+    image: mysql:8
+    environment:
+      - MYSQL_ROOT_PASSWORD="#Romanos3:10"
+      - MYSQL_DATABASE=php_auth
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD="#Romanos3:10"
+    ports:
+      - "3307:3306"
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  app:
+    image: php:8.3-apache
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      - db

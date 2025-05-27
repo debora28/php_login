@@ -1,3 +1,4 @@
+create database if not exists php_auth;
 
 create table if not exists php_auth.users (
     id int primary key auto_increment,

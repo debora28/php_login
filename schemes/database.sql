@@ -1,1 +1,1 @@
-create database php_auth;
+create database if not exists php_auth;
