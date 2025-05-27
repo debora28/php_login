@@ -22,11 +22,11 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 WORKDIR /var/www/html
 COPY . .
 
-# RUN sed -i 's/80/3000/' /etc/apache2/ports.conf \
-#     && sed -i 's/80/3000/' /etc/apache2/sites-available/000-default.conf
+RUN sed -i 's/80/3000/' /etc/apache2/ports.conf \
+    && sed -i 's/80/3000/' /etc/apache2/sites-available/000-default.conf
 
-# RUN chown -R www-data:www-data /var/www/html \
-#     && chmod -R 755 /var/www/html
+RUN chown -R www-data:www-data /var/www/html \
+    && chmod -R 755 /var/www/html
 
 # Habilita exibição de erros em dev
 RUN echo "display_errors=On\nerror_reporting=E_ALL" > /usr/local/etc/php/conf.d/dev.ini
